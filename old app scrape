@@ -1,0 +1,15 @@
+var expectedVal = $(this).find('div:nthchild(2) div span:nth-child(2) em').html();//expected
+
+                    if(expectedVal === null) {
+                        expectedVal = "-";//expected
+                        var timeVal = $(this).find('div div span em').html();//time
+                    } else {
+                        var timeVal = $(this).find('div div span').html();//time
+                    } 
+
+                    var airlineVal = $(this).find('div:nth-child(3) div span span').html();//airline
+                    var destVal = $(this).find('div:nth-child(4) span strong span').html();//destination
+                    var flightNumVal = $(this).find('div:nth-child(5) span:nth-child(2) small').html();//flightNum
+                    var gateVal = $(this).find('div:nth-child(5) div span').html();//gate
+                    var terminalVal = $(this).find('div:nth-child(6) div span').html();//terminal
+                    var statusVal = $(this).find('div:nth-child(7) div span').html();//status

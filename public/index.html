@@ -1,0 +1,268 @@
+<DOCTYPE HTML>
+<html>
+<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/datepicker.css" />
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="bootstrap/js/bootstrap-datepicker.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="search-area">
+            <div class="text-center">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" class="departures" id="option1" autocomplete="off" checked><h1>Departures</h1>
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" class="arrivals" id="option3 arrivals" autocomplete="off"><h1>Arrivals</h1>
+                </label>
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col">
+                    <div class="form-group">
+                        <select class="form-control place" id="exampleFormControlSelect1" placeholder="Choose City, London, Paris...">
+                            <option>All Departures</option>
+                            <option>Aalesund</option>
+                            <option>Aberdeen</option>
+                            <option>Agadir</option>
+                            <option>Alicante</option>
+                            <option>Almeria</option>
+                            <option>Al Najaf</option>
+                            <option>Amsterdam</option>
+                            <option>Amman</option>
+                            <option>Ankara</option>
+                            <option>Antalya</option>
+                            <option>Aqaba</option>
+                            <option>Athens</option>
+                            <option>Baghdad</option>
+                            <option>Bangkok</option>
+                            <option>Barcelona</option>
+                            <option>Basel Mulhouse</option>
+                            <option>Basrah</option>
+                            <option>Bastia</option>
+                            <option>Beirut</option>
+                            <option>Beijing</option>
+                            <option>Belgrade</option>
+                            <option>Berlin</option>
+                            <option>Bergen</option>
+                            <option>Biarritz</option>
+                            <option>Birmingham</option>
+                            <option>Bologna</option>
+                            <option>Boston</option>
+                            <option>Bristol</option>
+                            <option>Brussels</option>
+                            <option>Burgas</option>
+                            <option>Bucharest</option>
+                            <option>Budapest</option>
+                            <option>Cairo</option>
+                            <option>Casablanca</option> 
+                            <option>Catania</option>
+                            <option>Chania</option>
+                            <option>Chisinau</option>
+                            <option>Cologne/Bonn</option>
+                            <option>Dehli</option>
+                            <option>Doha</option>
+                            <option>Dubai</option>
+                            <option>Dublin</option>
+                            <option>Dubrovnik</option>
+                            <option>Dusseldorf</option>
+                            <option>Edinburgh</option>
+                            <option>Eidhoven</option>
+                            <option>Erbil</option>
+                            <option>Faro</option> 
+                            <option>Florence</option>
+                            <option>Fort Lauderdale</option>
+                            <option>Frankfurt</option>
+                            <option>Fuerteventura</option> 
+                            <option>Gazipasa</option>
+                            <option>Gdansk</option>
+                            <option>Geneva</option>
+                            <option>Genoa</option>
+                            <option>Gothenburg</option>
+                            <option>Gran Canaria</option> 
+                            <option>Groningen</option>
+                            <option>Hamburg</option>
+                            <option>Haugesund</option>
+                            <option>Hannover</option>
+                            <option>Helsinki</option>
+                            <option>Honkong</option>
+                            <option>Hurghada</option>
+                            <option>Ibiza</option>
+                            <option disabled>---Internal---<option>
+                                <option>Aalborg</option>
+                                <option>Aarhus</option>
+                                <option>Billund</option>
+                                <option>Bornholm</option>
+                                <option>Midtjylland</option>
+                                <option>Karup</option>
+                                <option>Sonderborg</option>
+                            <option disabled>--------------<option>
+                            <option>Irakleion</option>
+                            <option>Islamabad</option>
+                            <option>Istanbul</option>
+                            <option>Izmir</option>
+                            <option>Kalamata</option>
+                            <option>Kangerlussuaq</option>
+                            <option>Kaunas</option>
+                            <option>Kayseri</option>
+                            <option>Kerkyra</option>
+                            <option>Kiev</option>
+                            <option>Klaipeda/Palanga</option>
+                            <option>Konya</option>
+                            <option>Kos</option>
+                            <option>Krabi</option>
+                            <option>Krisitansand</option>
+                            <option>Larnaca</option>
+                            <option>Lahore</option>
+                            <option>Lisbon</option>
+                            <option>Ljubljana</option>
+                            <option>Leeds/Bradford</option>
+                            <option>London</option>
+                            <option>Los Angeles</option>
+                            <option>Luxemborg</option>
+                            <option>Madeiria</option> 
+                            <option>Madrid</option> 
+                            <option>Miami</option>
+                            <option>Malta</option>
+                            <option>Manchester</option>
+                            <option>Malaga</option> 
+                            <option>Marakech</option>
+                            <option>Milan</option>
+                            <option>Montpellier</option>
+                            <option>Moscow</option>
+                            <option>Munich</option> 
+                            <option>Naples</option>
+                            <option>Narsarsuaq</option>
+                            <option>Newcastle</option>
+                            <option>New York</option>
+                            <option>Nice</option>
+                            <option>Oakland</option>
+                            <option>Olbia</option>
+                            <option>Orlando</option>
+                            <option>Oslo</option>
+                            <option>Ostersund</option>
+                            <option>Paris</option>
+                            <option>Palermo</option>
+                            <option>Palma De Mallorca</option>
+                            <option>Phuket</option>
+                            <option>Pisa</option>
+                            <option>Ponta Delgada</option> 
+                            <option>Porto</option>
+                            <option>Poznan</option>
+                            <option>Prague</option>
+                            <option>Pula</option>
+                            <option>Preveza/Lefkada</option>
+                            <option>Pristina</option>
+                            <option>Reykjavik</option>
+                            <option>Rhodes</option>
+                            <option>Riga</option>
+                            <option>Rome</option>
+                            <option>Salzburg</option>
+                            <option>San Francisco</option>
+                            <option>Santa Cruz De La Palma</option> 
+                            <option>Saravejo</option>
+                            <option>Sevilla</option> 
+                            <option>Shanghai</option>
+                            <option>Sharm El-Sheikh</option>
+                            <option>Sibiu</option>
+                            <option>Singapore</option>
+                            <option>Skopje</option>
+                            <option>Sofia</option>
+                            <option>Split</option>
+                            <option>Stavanger</option>
+                            <option>Stockholm</option>
+                            <option>St Petersburg</option>
+                            <option>Stuttgart</option>
+                            <option>Tel Aviv-Yafo</option>
+                            <option>Tallin</option>
+                            <option>Thessaloniki</option>
+                            <option>Thira</option>
+                            <option>Tivat</option>
+                            <option>Tokyo</option>
+                            <option>Toronto</option>
+                            <option>Toulon</option>
+                            <option>Tromso</option>
+                            <option>Trondheim</option>
+                            <option>Valencia</option> 
+                            <option>Varna</option>
+                            <option>Venice</option>
+                            <option>Vienna</option>
+                            <option>Vilnius</option>
+                            <option>Warsaw</option>
+                            <option>Washington</option>
+                            <option>Wroclaw</option>
+                            <option>Zagreb</option>
+                            <option>Zurich</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-control datepicker" id="date" type="text" name="date" autocomplete="off" placeholder="Today">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <select class="form-control time" id="exampleFormControlSelect1">   
+                        <option>All day</option>
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mx-auto" style="width: 50%">
+                        <button type="button" class="btn btn-primary" id="submit">Let's fly</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="response-empty">
+            <h1></h1>
+        </div>
+        <table class="table flight-table">
+            <thead>
+                <tr>
+                    <td>Time</td>
+                    <td>Expected</td>
+                    <td>Airline</td>
+                    <td>Destination</td>
+                    <td>Flight Number</td>
+                    <td>Gate</td>
+                    <td>Terminal</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+</body>
+</html>
