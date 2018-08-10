@@ -1,96 +1,160 @@
 $(document).ready(function(){   
 
+$('#welcome-text').animate({opacity: 1}, 1600);    
 //_____________Search Area interface________________//
 
 //Enables date picker function, from datepicker.js
-$('.datepicker').datepicker()
-
-//Change destination selection box html depending on button toggle (Destination/Arrival)
-$('.btn-group-toggle').on('click', (e) =>{
-    var a = e.target.innerHTML;
-    $('select.place option:nth-child(1)').html(`All ${a}`);
-})
+    $('.datepicker').datepicker()
 
 
+//#submit button is clicked (removes previous search results, gathers parameters from input/selections, assigns to 'data' object, triggers $get() request, generates HTML with response(adding necessary classes));
+$('#submit').on('click', function(e) {
 
-//#submit button is clicked (clears flight info on index.html, gathers parameters from input/selections, assigns to 'data' object, triggers $get() request, generates HTML with response)
-    $('#submit').on('click', (e) =>{
 
+    //________Remove any previous search results
 
-        //________Remove any flight content that is displayed
-            $('#flight-body tbody').remove();
-            const flightTable = document.getElementsByClassName('flight-table');
-        
-        //________Gathers properties from index.html form
+        $('.response-empty h1').html('');
+        $('.flight-table').hide();
+        $('.flight-table tbody').remove();
+        const flightTable = document.getElementsByClassName('flight-table');
+    
+    //________Gathers properties from index.html form
 
+        //If options have been selected
             var place = $('.place').find("option:selected").text();
             var date = $('#date').val()
             var time = $('.time').find("option:selected").text().substring(0, 2);
-        
-            //depARR
+    
+        //DEPARTURE or ARRIVAL? - depARR
             if($('.departures').prop('checked')){
                 var depArr = 'departures';
             } else {
                 var depArr = 'arrivals';
-            };  
-
-            if(place === 'All Departures' || place === 'All Arivals'){
-                place = "";
             };
 
-            //time
-            if(time === 'Al'){
-                var time = '00'
-            } 
-        
+        //if nothing has been selected,
+            
+            //PLACE 
+                if(place == "All Destinations") {
+                    place = "";
+                };
 
-        //_________Creates object of index.html form inputs
+            //DATE
+                if(date === ""){
 
-            var data = {
-                
-                "depArr" : depArr,
-                "place" : place,
-                "date" : date,
-                "time" : time
+                    function myFunction() {
 
-            }
+                        var d = new Date();
+                        var date = 0 +(d.getDate().toString());
+                        var month = 0 +((d.getMonth()+1).toString());
+                        var year = (d.getYear()+1900).toString();
+                        var today = `${date} - ${month} - ${year}`; 
+                        
+                        date = today;
+                    }
 
-            console.log(data);
+                }
 
-        //get request 
+            //TIME - (first two characters of time )
+                if(time === 'Al'){
+                    var time = '00'
+                } 
+    
+
+    //_________Creates object of index.html form inputs
+
+        var data = {
+            
+            "depArr" : depArr,
+            "place" : place,
+            "date" : date,
+            "time" : time
+
+        }
+
+    //_________Get request 
+    
         $.get('/search', data, function(response){
 
-        var arr = response;
+        //________If response array is empty
+            if(response.length == 0){
+                $('.flight-table').css('display: none;');
+                $('.response-empty').show();
+                 
+                    var dirDestSuf;
+                    var dateSuf = "today";
+                    var timeSuf = "";
 
-        console.log(arr)
+                        if(depArr == "departures"){
+                            dirDestSuf = "departing"
+                            if(!place == ""){
+                                dirDestSuf = `to ${place} ${dirDestSuf}`
+                            }
+                        } else {
+                            dirDestSuf = "arriving"
+                            if(!place == ""){
+                                dirDestSuf = `${dirDestSuf} from ${place}`
+                            }
+                        };
+                    
+                        if(!date == ""){
+                            dateSuf = `on ${date}`;
+                        }
 
-        if(arr.length === 0){
-            time = $('.time').find("option:selected").text()
-            if($('.departures').prop('checked')){
-            $('.reponse-empty h1').html(`Unfortunately there are no flights to ${place} on this date after ${time}`);
-        } else if ($('.arrivals').prop('checked')){
-            $('.reponse-empty').html(`Unfortunately there are no flights arriving from ${place} on this date after ${time}`);
-        }
-        }
+                        if(!time == "00"){
+                            timeSuf = `after ${time}:00`
+                        }
 
-        const tBody = document.createElement('tbody');
-        $(flightTable).append(tBody);
-
-        for(i=0; i < arr.length; i++){
-            const tableRow = document.createElement('tr');
-            $(tBody).append(tableRow);
-
-            //create array of JSON values//loop through//populating new td's with object contents
-            var obVals = Object.values(arr[i]);
+                    const textDisplay = $('.response-empty h1');
+                    var responseEmptyString = `Unfortunately there are no flights ${dirDestSuf} ${timeSuf} ${dateSuf}.`;
+                    textDisplay.html(responseEmptyString);
                 
-            for(var j = 0; j < obVals.length; j++){
-                
-                td = document.createElement('td');
-                td.innerHTML = obVals[j];
-                $(tableRow).append(td).delay(1000);
-            
-            }
-        }
-        });
-    });
-});
+            } else {
+
+                $('.flight-table').show();
+          
+
+    //_______Generate HTML from response
+                const tBody = document.createElement('tbody');
+                $(flightTable).append(tBody);
+
+                for(i=0; i < response.length; i++){
+                    const tableRow = document.createElement('tr');
+                    $(tBody).append(tableRow);
+
+                    var obVals = Object.values(response[i]);
+                        
+                    for(var j = 0; j < obVals.length; j++){
+                        td = document.createElement('td');
+                        $(td).html(obVals[j]);
+
+                        if(j===1 || j===3 || j===4){
+                            $(td).addClass('mobile-hide')
+                        } else if((td.innerHTML == "Boarding") || (td.innerHTML == "Closing")){
+                            $(tableRow).addClass('amber')
+                        } else if((td.innerHTML == "Cancelled") || (td.innerHTML == "Final Call") || (td.innerHTML == "Closed")){
+                            $(tableRow).addClass('red')
+                        } else if((td.innerHTML == "To gate") || (td.innerHTML == "Baggage") || (td.innerHTML == "Landed")){
+                            $(tableRow).addClass('green')
+                        }
+                        $(tableRow).append(td);
+
+                        //for mobile/dekstop hide/show
+                        if(j===1 && td.innerHTML !== ""){
+                            tdText = td.innerHTML;
+                            $(td).prev().append(`<p><b>${tdText}</b></p>`);
+                        } else if(j===3){
+                            tdText = td.innerHTML;
+                            $(td).prev().append(`<caption class="small">${tdText}</caption>`);
+                        }else if(j===4){
+                            tdText = td.innerHTML;
+                            $(td).prev().prev().append(`<caption class="small">${tdText}</caption>`);
+                        }
+
+
+                    }//for loop j
+                }//for loop i
+        }//empty string if/else
+    });//$.get()
+});//submit
+});//$doc ready

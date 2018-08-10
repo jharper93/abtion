@@ -1,19 +1,107 @@
+#welcome-text {
 
+	opacity: 0;
+	padding: 6em;
+	color: white;
 
+}
+
+.background-pic {
+
+	background: url('images/clouds1.jpeg') no-repeat bottom;
+	background-size: cover;
+	height: 500px;
+	position: relative;
+	z-index: 1;
+
+}
+
+/*_______search-area______*/
 
 
 #search-area {
-	
-	margin: 10em 0; 
+
+	margin-top: -8em;
+	padding: 3em 3em 1.5em;
+	border-radius: 4px;
+	position: relative;
+	z-index: 2;
+	-webkit-box-shadow: 0px 0px 34px -5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 34px -5px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 34px -5px rgba(0,0,0,0.75);
+	background-color: white;
+	transition: 0.6s;
+
+}
+
+#search-area:hover {
+
+	background-color: rgb(249, 251, 255);
+	box-shadow: 6px 6px 35px -1px rgb(173, 173, 173);
+	transition: 0.6s;
+
+}
+
+.btn-secondary  {
+
+	background-color: white;
+	border-width: 0px;
+	color: lightgrey;
+	width: 18em;
+
+}
+
+label.btn.btn-secondary.active, 
+ {
+    background-color: pink;
+}
+
+#submit {
+
+	background-color: rgb(76, 76, 76);
+	border: none;
+	color: white;
+	font-weight: 600;
+	border-radius: 3px;
+	width: 90%;
+	transition: .7s ease-in-out;
+	box-shadow: 4px 4px 25px 2px rgb(173, 173, 173);
+
+}
+
+#submit:hover {
+
+	box-shadow: 2px 2px 8px 0px rgb(130, 130, 130);
+	transition: .2s;
+	background-color:rgb(137, 137, 137);
 
 
 }
 
-/*_______Table______*/
+/*_______response-empy______*/
 
-.flight-table thead tr {
+.response-empty {
 
-	background-color: rgb(205, 205, 205);
+	display: none;
+	padding: 3em;
+	margin: 3em 0em;
+	font-weight: bold;
+	color: rgb(91, 113, 147);
+	background-color: white;
+
+}
+
+/*_______flight-Table______*/
+
+.flight-table {
+
+	display: none;
+	padding: 3em 3em 1.5em;
+	margin: 3em 0em 5em;
+	border-radius: 10px;
+	position: relative;
+	z-index: 2;
+	background-color: white;
 
 }
 
@@ -23,15 +111,132 @@ thead tr td {
 
 }
 
-tr td {
+.flight-table tr td {
 
-
-	max-width: 20em;
+	max-width: 13em;
+	padding: 1.8em .5em;
 
 }
 
-.btn-secondary {
+.flight-table thead tr td {
 
-	width: 300px;
+	font-size: 1.2em;
+	padding: 1.8em .4em;
+	color: rgb(91, 113, 147);
+
+}
+
+.red {
+
+	background-color:rgba(250, 162, 162, 0.94);
+
+}
+
+.amber {
+
+	background-color: rgba(255, 235, 193, 0.94);
+
+}
+
+.green {
+
+	background-color:rgb(199, 229, 193);
+
+}
+
+/*desktop hiding*/
+
+.flight-table td p,.flight-table td caption {
+
+	display:none;
+
+}
+
+
+/*-----footer------*/
+
+footer {
+
+	padding: 2em 0em;
+	margin-top: 6em;
+	border-top: solid 1px lightgrey;
+
+}
+
+footer .flex-i {
+
+	width: 19em;
+
+}
+
+.flex-c {
+
+	display: flex;
+	justify-content: space-between;
+
+}
+
+svg {
+
+	height: 3.5em;
+	padding: 1em;
+
+}
+
+
+
+
+@media (max-width: 767px)
+{
+
+/*flight table*/
+.mobile-hide, .flight-table td s {
+
+	display: none;
+
+}
+
+.flight-table td p, .flight-table td caption {
+
+	display:block;
+
+}
+
+
+.flight-table tr td {
+
+	max-width: initial;
+	padding: 1.8em 1em;
+
+}
+
+/* resizing */
+
+#search-area {
+
+	padding: 1em; 
+
+}
+
+.btn-secondary  {
+
+	width: initial;
+
+}
+
+#welcome-text {
+
+	padding: 5em 0em;
+
+}
+
+/* footer */
+
+div.flex-i {
+
+	display:none;
+
+}
+
 
 }

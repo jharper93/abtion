@@ -10,6 +10,12 @@
         <script src="index.js"></script>
 </head>
 <body>
+    <div class="background-pic">
+        <div class="text-center" id="welcome-text">         
+        <h1 class="display-1 font-weight-bold">CPH Flight Search</h1>
+        <h2 class="lead">Please enter information below to find flights departing from, or arriving to, Copenhagen Airport</h2>
+        </div>
+    </div>
     <div class="container">
         <div id="search-area">
             <div class="text-center">
@@ -18,7 +24,7 @@
                     <input type="radio" name="options" class="departures" id="option1" autocomplete="off" checked><h1>Departures</h1>
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" class="arrivals" id="option3 arrivals" autocomplete="off"><h1>Arrivals</h1>
+                    <input type="radio" name="options" class="arrivals" id="option3" autocomplete="off"><h1>Arrivals</h1>
                 </label>
                 </div>
             </div>
@@ -26,7 +32,7 @@
                 <div class="col">
                     <div class="form-group">
                         <select class="form-control place" id="exampleFormControlSelect1" placeholder="Choose City, London, Paris...">
-                            <option>All Departures</option>
+                            <option>All Destinations</option>
                             <option>Aalesund</option>
                             <option>Aberdeen</option>
                             <option>Agadir</option>
@@ -238,31 +244,48 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="mx-auto" style="width: 50%">
+                    <div class="mx-auto">
                         <button type="button" class="btn btn-primary" id="submit">Let's fly</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="response-empty">
-            <h1></h1>
+            <h1 class="font-weight-bold"></h1>
         </div>
         <table class="table flight-table">
             <thead>
                 <tr>
                     <td>Time</td>
-                    <td>Expected</td>
+                    <td class="mobile-hide">Expected</td>
                     <td>Airline</td>
-                    <td>Destination</td>
-                    <td>Flight Number</td>
+                    <td class="mobile-hide">Destination</td>
+                    <td class="mobile-hide">Flight N.</td>
                     <td>Gate</td>
-                    <td>Terminal</td>
                     <td>Status</td>
                 </tr>
             </thead>
             <tbody></tbody>
         </table>
-
+    <footer>
+        <div class="text-center">
+            <div class="flex-c">
+           <p class="flex-i">abtion-web-scrape-api</p>
+           <div class="flex-i">
+           <p>created using:</p>
+           <p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 32l34.936 403.213L255.769 480l157.245-44.854L448 32H64zm307.997 132h-184l3.991 51h176.008l-13.505 151.386-98.5 28.094-98.682-27.976L150.545 289h48.254l3.423 39.287 53.769 14.781 53.422-14.915L314.987 264H147.986l-12.571-149.589 240.789.016L371.997 164z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256.282 339.488zM64 32l34.946 403.219L255.767 480l157.259-44.85L448 32H64zm290.676 334.898l-98.607 28.125-98.458-28.248L150.864 289h48.253l3.433 39.562 53.586 15.163.132.273h.034l53.467-14.852L315.381 265H203l-4-50h120.646l4.396-51H140l-4-49h240.58l-21.904 251.898z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M208 88.001h-80v212.498c0 52.58-18.032 67.261-49.412 67.261-14.705 0-27.948-2.521-38.25-6.063L32 423.904C46.7 428.966 69.259 432 86.907 432 158.955 432 208 398.129 208 301.02V88.001zM382.463 80C305.02 80 256 123.998 256 182.154c0 50.083 37.751 81.44 92.641 101.665 39.7 14.158 55.392 26.808 55.392 47.539 0 22.756-18.139 37.425-52.448 37.425-31.863 0-60.789-10.64-80.394-21.255v-.021L256 410.727c18.639 10.638 53.441 21.255 91.167 21.255C437.854 431.98 480 383.43 480 326.284c0-48.55-26.958-79.9-85.278-102.163-43.139-17.191-61.27-26.795-61.27-48.542 0-17.2 15.688-32.869 48.043-32.869 31.846 0 53.744 10.707 66.505 17.291l19.125-64C447.125 87.22 420.188 80 382.463 80z"/></svg>
+        <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><style>.st0{fill:#010101}</style><path class="st0" d="M227.6 213.1H256v57.1h-28.4z"/><path class="st0" d="M0 156v171.4h142.2V356H256v-28.6h256V156H0zm142.2 142.9h-28.4v-85.7H85.3v85.7H28.4V184.6h113.8v114.3zm142.2 0h-56.9v28.6h-56.9V184.6h113.8v114.3zm199.2 0h-28.4v-85.7h-28.4v85.7h-28.4v-85.7H370v85.7h-56.9V184.6h170.7v114.3z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M255.917 480a32.536 32.536 0 0 1-16.633-4.599l-52.985-32.44c-7.914-4.562-4.023-6.203-1.443-7.141 10.565-3.781 13.713-5.657 24.947-12.285 1.206-.667 2.747-.424 3.955.322l39.71 23.504c1.476.85 3.557.85 4.931 0l155.188-92.246c1.475-.877 2.415-2.646 2.415-4.441V163.869c0-1.85-.94-3.592-2.449-4.528l-155.12-94.672c-1.478-.894-3.421-.894-4.898 0L98.516 159.374c-1.544.903-2.516 2.698-2.516 4.495v186.805c0 1.813.972 3.513 2.481 4.389l39.929 23.972c23.61 12.204 37.59-.17 37.59-14.611V180.725c0-2.652 2.047-4.727 4.596-4.727h22.809c2.515 0 4.597 2.072 4.597 4.727v183.698c0 32.563-19.353 51.248-49.199 51.248-9.156 0-16.397 0-36.552-10.279l-41.584-24.781C70.371 374.459 64 362.965 64 350.656V161.191c0-12.316 6.371-23.784 16.665-29.917L239.35 36.41c10.027-5.88 23.374-5.88 33.332 0l158.65 94.864C441.63 137.423 448 148.899 448 161.191v189.465c0 12.309-6.37 23.75-16.668 29.953l-158.65 94.774a32.52 32.52 0 0 1-16.698 4.599l-.067.018z"/><path d="M304.943 351.998c-64.61 0-84.006-31.61-84.006-59.271 0-2.629 2.048-4.729 4.562-4.729h20.521c2.282 0 4.227 1.7 4.562 4.016 3.084 21.602 16.748 31.15 54.324 31.15 33.399 0 47.091-10.346 47.091-28.684 0-10.592-3.463-18.424-55.407-23.697-43.427-4.441-70.288-14.373-70.288-50.295 0-33.135 26.996-52.49 72.234-52.49 46.128 0 76.462 14 79.173 50.829.102 1.337-.368 2.629-1.241 3.644-.871.965-2.078 1.527-3.353 1.527h-20.591c-2.146 0-4.024-1.562-4.459-3.713-4.401-16.953-16.97-23.402-49.563-23.402-36.486 0-40.746 12.753-40.746 22.607 0 11.963 5.031 15.441 54.294 22.172 48.761 6.663 71.933 16.117 71.933 51.552 0 35.781-28.808 58.783-79.075 58.783l.035.001z"/></svg>
+        <ion-icon name="logo-github"></ion-icon>
+        </p>
+           </div>
+        <p class="flex-i">jamesharper</p>
+        </div>
+    </div>
+    </footer>
     </div>
 </body>
 </html>
